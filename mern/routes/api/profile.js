@@ -1,4 +1,6 @@
 const express = require('express');
+const request = require('request');
+const config = require('config');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
@@ -293,6 +295,19 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     await profile.save();
     res.json(profile);
 
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
+router.get('/github/:username', (req, res) => {
+  try {
+    const options = {
+      
+    }
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server Error');
